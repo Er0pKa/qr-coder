@@ -1,0 +1,38 @@
+<head>
+    <script src="qrcode.js"></script>
+    <style>
+        #qrcode {
+            width:160px;
+            height:160px;
+            margin-top:15px;
+        }
+
+        #text {
+            width:80%
+        }
+    </style>
+</head>
+<body>
+    <input id="text" type="text" value="сюда писать" ><br />
+    <button onclick="makeCode();">сюда нажимать</button>
+    <div id="qrcode"></div>
+    <script>
+        var qrcode = new QRCode("qrcode");
+        var elText = document.getElementById("text");
+        elText.focus();
+
+        function makeCode () {      
+            
+            if (!elText.value) {
+                alert("Input a text");
+                elText.focus();
+                return;
+            }
+            
+            qrcode.makeCode(elText.value);
+        }
+        if (elText.value) {
+            makeCode(); 
+        }
+    </script>
+</body>
